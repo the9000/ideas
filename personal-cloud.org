@@ -1,0 +1,95 @@
+# Personal Cloud
+
+* Pieces
+** Webmail.  
+** Contacts / address book.  
+** Calendar.
+
+** Word processor 
+** Spreadsheet?
+
+** File storage.  
+** Picture gallery.  
+** Video gallery.
+
+* Extensibility
+
+* Data organization 
+
+** Tag-based "file system". 
+** Tag discovery for items that reasonably support it 
+   ; audio, photo. 
+** Unique [sub]tags are automatically added to each data item.
+
+* Publishing
+  ; Any piece may provide consumer views, intended not only for authors / owners.
+
+** Authenticated consumer access 
+** OpenID, OAuth supported.  
+** Gravatar for userpics.  
+** A local profile can be filled in to give more details.  
+** Internally may link profiles to contacts.
+
+** Public / anonymous access 
+   ; OK for viewing.  With caution, possible for commenting.
+
+** Comments 
+*** Easy to integrate into consumer views.  
+*** Use auth.  
+*** Tree or flat.
+
+* Navigation
+
+** Tags
+   ; Tags as properties: can carry value. Example: media tags.
+   ; [ music, author="Pink Floyd", album="Division Bell", tracknumber=3 ]
+# How to reconcile with non-valued tags?
+   ; Possible hierarchical tags as key-value tags, using parent as key:
+   ; [ music, author/"Pink Floyd", album/"Division Bell", tracknumber/3 ]
+   ; This makes search by tags with 'any value' just a search by parent tag.
+   ; This allows many values per tag (many subtags)
+   ; How to typecheck the values? Let tags limit subtag names.
+   ; Non-string names means canonicalization and formats. L10N hell.
+*** Tags are hierarchical. 
+    ; Assume slash to separate subtags: mail/inbox
+*** Sub-tags, a la gmail, distinct from the parent tags.  
+    ; mail/inbox does not match mail, but may match mail/*.
+*** Tags are pervasive. 
+    ; Every application within the cloud has access to the same tags.  
+*** Tags have presentation attributes 
+    ; color, a short text blurb, maybe an icon.  
+*** Contacts serve as implicit tags 
+    ; Probably under a common parent tag: contact/"Joe Random"
+
+
+** Saved searches, aka Folders
+
+Searches by any content can be saved. Possibly "sub-searches" with additional
+constraints can look like "sub-folders".
+
+Searches purely by tags are _drag targets:_ if any taggable item dragged onto
+them, necessary tags are added, incompatible tags are removed. It's a fast
+categorization tool.
+
+* Concurrent updates and consistency
+
+* Version control
+
+* Implementation
+
+** Authentication
+
+*** Author Authentication * Facets
+
+** Consumer authentication 
+*** OpenID 
+*** OAuth 
+*** Linking of accounts (or not)
+
+** Anonymous aka public access
+
+** Service Description and Discovery Common message bus
+
+** Abstracted and custom storage
+
+
