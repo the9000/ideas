@@ -2,12 +2,12 @@
 
 # Reverse tags
 
-*Examples:* 2012/year, 2012/july/10/date, "Hey Jude"/title, 10/track, 
-  "Joe Random"/contact, inbox/email
+*Examples:* `2012/year`, `2012/july/10/date`, `"Hey Jude"/title`, `10/track`, 
+  `"Joe Random"/contact`, `inbox/email`.
 
-Search for `foo` finds any `foo/bar/...` by default, so generalizations do not hurt.
-Search for `foo/*` explicitly looks for subtags, `foo/` is reverse.
-Search for `*/date` finds all dates -> easy cross-service tagging.
+* Search for `foo` by default finds any `foo/bar/...`, so generalizations do not hurt.
+* Search for `foo/*` explicitly looks for subtags, `foo/` is reverse.
+* Search for `*/date` finds all dates -> easy cross-service tagging.
 
 Simple one-level tags can be grouped later, and/or automatically.
 Typing for search starts from the most relevant part.
@@ -57,15 +57,15 @@ Downsides: unstability of levels.
 
 # Sublevels as values for superlevel keys
 
-*A photo:* location/brooklyn, date/"summer 2012"
-*An email:* email/inbox, money -- ???
-*A media file:* artist/Nirvana year/1993 -- strange 'year' parent tag
+* *A photo:* `location/brooklyn`, `date/"summer 2012"`
+* *An email:* `email/inbox`, `money` -- ???
+* *A media file:* `artist/Nirvana year/1993` -- strange 'year' parent tag
 
 ## How to mix key-value properties *and* just tags?
 
 Case in point: a media file.
-Properties: artist="...", year="...", genre="...", etc.
-Tags: #starred #favorite #instrumental, etc
+Properties: `artist="..."`, `year="..."`, `genre="..."`, etc.
+Tags: `#starred` `#favorite` `#instrumental`, etc
 
 Case in point: a photo.
 Properties: location="...", shutter_speed="...", etc (see exif).
