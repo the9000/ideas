@@ -59,7 +59,7 @@ Downsides: unstability of levels.
 
 * *A photo:* `location/brooklyn`, `date/"summer 2012"`
 * *An email:* `email/inbox`, `money` -- ???
-* *A media file:* `artist/Nirvana year/1993` -- strange 'year' parent tag
+* *A media file:* `artist/Nirvana` `year/1993` -- strange 'year' parent tag
 
 ## How to mix key-value properties *and* just tags?
 
