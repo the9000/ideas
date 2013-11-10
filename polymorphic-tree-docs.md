@@ -10,7 +10,7 @@ whatever sizes they need.
 
 ## Document is a tree anyway
 
-The section - chapter - paragraph structure is a tree. Decent editors allows to
+The section - chapter - paragraph structure is a tree. Decent editors allow to
 show it like that. Make it explicit. Allows easy text folding, focusing, etc.
 
 ### Folding
