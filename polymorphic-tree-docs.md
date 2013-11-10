@@ -15,8 +15,8 @@ show it like that. Make it explicit. Allows easy text folding, focusing, etc.
 
 ### Folding
 
-* A node can be _folded_, so that it and its children are reduced to a small
-  fragment.
+* A node can be _folded_, so that it and its (grand-)children are reduced to one
+  small fragment.
 * A node can be _minified_, so that its content is reduced, but its children are
   visible.
 * A node can be _curbed_ (better word?), so that it's visible, bit its children
