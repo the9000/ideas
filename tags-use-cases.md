@@ -1,7 +1,7 @@
 # Reverse-generalized tags
 
 Add generalizing categories _after_ the value, reversing the
-traditional "general to specific" tree structure".
+traditional "general to specific" tree structure.
 
 *Examples:* `2012/year`, `2012/july/10/date`, `"Hey Jude"/title`, `10/track`, 
   `"Joe Random"/contact`, `inbox/email`.
