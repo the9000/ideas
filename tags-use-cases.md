@@ -18,11 +18,12 @@ Top-level namespace is polluted with all posible specific tags (anti-tree).
 ## Limited structure support
 
 `bar/foo` and `baz/foo` can be seen as parts of the same `foo`.
-Automatic tag extaxction for an audio track:
-title: "Sad but true" -> `"Sad but true"/title`
-artist: "Metallica" -> `Metallica/artist`
-tracknumber: 2 -> `2/tracknumber`
-album: "Black" -> `Black/album`
+Automatic tag extaction for an audio track:
+
+* title: "Sad but true" -> `"Sad but true"/title`
+* artist: "Metallica" -> `Metallica/artist`
+* tracknumber: 2 -> `2/tracknumber`
+* album: "Black" -> `Black/album`
 
 Automatically tagged as `music/audio/media`, as opposed to e.g. `music/sheet` or
 `music/video/media`.
