@@ -49,13 +49,13 @@ Downsides: unstability of levels.
 
 # Simple 1-level tags (as in twitter)
 
-*A photo:* #brooklyn #summer2012
-*An email:* #inbox #important #money
+* *A photo:* #brooklyn #summer2012
+* *An email:* #inbox #important #money
 
 # Simple multi-level tags (as in gmail)
 
-*A photo:* location/brooklyn y2012/summer
-*An email:* inbox money/shopping
+* *A photo:* location/brooklyn y2012/summer
+* *An email:* inbox money/shopping
 
 # Sublevels as values for superlevel keys
 
