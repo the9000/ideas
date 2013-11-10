@@ -20,6 +20,10 @@
 * Data organization
 
 ** Tag-based "file system".
+
+Associative, not hierarchical. Semantic net instead of folder structure. Folders can be "emulated" on top.
+Content-addressable (automatic versioning and deduplication).
+
 ** Tag discovery for items that reasonably support it
    ; audio, photo.
 ** Unique [sub]tags are automatically added to each data item.
