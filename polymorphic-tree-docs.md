@@ -5,6 +5,9 @@ incompatible structures that documents need to include: text, tables, pictures,
 etc. Let's make it explicit. Why have a spreadsheet and a word processor
 separated? Why think which type of document to create?
 
+Also, do away with the paper-page representation of a document. Parts may have
+whatever sizes they need.
+
 ## Document is a tree anyway
 
 The section - chapter - paragraph structure is a tree. Decent editors allows to
@@ -18,9 +21,13 @@ show it like that. Make it explicit. Allows easy text folding, focusing, etc.
   visible.
 * A node can be _curbed_ (better word?), so that it's visible, bit its children
   are folded.
+* A node can be _focused_ so that it and its children are fully visible but its
+  parent and siblings are folded.
   
 Works great with plain texts in word processors already. HTML DOM is somehow
 similar.
+
+Multiple windows can show different subnodes of a document.
 
 ## Need tables!
 
