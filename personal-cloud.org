@@ -1,37 +1,78 @@
 # Personal Cloud
 
-* User-facing pieces
+* Common in-cloud services for parts
+  ; This what an OS should be providing.
+  ; As thin a layer above the OS as possible.
+  ; As language-agnostic as possible.
+  ; See App Engine.
+
+** Security.
+*** Authentication service.
+**** OpenID, OAuth accepted from remote systems
+**** (?) OpenID, OAuth provided outside
+**** Gravatar for userpics.
+**** A local profile can be filled in to give more details.
+**** Internally may link profiles to contacts.
+*** Capability-based access control.
+*** Encryption service (uses user's secrets).
+**** (?) SSH infrastructure exposed
+**** (?) GPG keys and infrastructure exposed
+
+** Storage
+*** Persistent blob storage (binary data), mime-typed.
+**** Efficient search by keys and by tags.
+*** Tagging service
+**** Tag discovery for items that reasonably support it
+     ; audio, photo.
+**** Unique [sub]tags are automatically added to each data item.
+**** Tag-based "file system".
+*** (?) Full-text search
+*** Memcached
+*** (?) RDBMS
+*** (?) Fast key-value DB
+
+** Internal messaging
+*** Queues
+*** Cron
+*** (?) pub-sub
+    ; Has issues.
+
+** Contacts
+*** Profiles for human contacts
+    ; linked to security credentials if needed
+*** (?) Profiles for machine accounts
+    ; external services, RSS feeds, etc
+
+* User-facing apps
+  ; Built on top of common services.
 
 ** File storage.
+   ; Exposes the tag-based "file system"
 ** Picture gallery.
 ** Video gallery.
 
 ** Webmail.
-** Contacts / address book.
+   ; a web interface on top of regular exim/dovecot or whatnot.
+** Contacts / address book management
 ** Calendar.
+   ; if possible, on top of a regular calendar server.
 
 ** Word processor
+   ; See hackpad and ginkgo-app
+*** Must have serious offline capabilities
+
 ** Spreadsheet?
+*** Must have serious offline capabilities
+
 
 * Extensibility
-
   ; Common language-neutral engine allows to add parts.
-
-* Data organization
-
-** Tag-based "file system".
-** Tag discovery for items that reasonably support it
-   ; audio, photo.
-** Unique [sub]tags are automatically added to each data item.
+  ; Language-neutral late binding: HTTP, REST, JSON.
 
 * Publishing
   ; Any piece may provide consumer views, intended not only for authors / owners.
 
 ** Authenticated consumer access
-** OpenID, OAuth supported.
-** Gravatar for userpics.
-** A local profile can be filled in to give more details.
-** Internally may link profiles to contacts.
 
 ** Public / anonymous access
    ; OK for viewing.  With caution, possible for commenting.
@@ -44,37 +85,25 @@
 * Navigation
 
 ** Tags
-   ; Tags as properties: can carry value. Example: media tags.
-   ; [ music, author="Pink Floyd", album="Division Bell", tracknumber=3 ]
-# How to reconcile with non-valued tags?
-   ; Possible hierarchical tags as key-value tags, using parent as key:
-   ; [ music, author/"Pink Floyd", album/"Division Bell", tracknumber/3 ]
-   ; This makes search by tags with 'any value' just a search by parent tag.
-   ; This allows many values per tag (many subtags)
-   ; How to typecheck the values? Let tags limit subtag names.
-   ; Non-string names means canonicalization and formats. L10N hell.
-*** Tags are hierarchical.
-    ; Assume slash to separate subtags: mail/inbox
-*** Sub-tags, a la gmail, distinct from the parent tags.
-    ; mail/inbox does not match mail, but may match mail/*.
+   ; See the reverse tags document
+*** Tags are hierarchical
+    ; most specific part goes first: inbox/mail, "Moby Dick"/title
+    ; Assume slash to separate level, double quotes to quote spaces.
 *** Tags are pervasive.
-    ; Every application within the cloud has access to the same tags.
+    ; All applications within the cloud use the same set of tags.
 *** Tags have presentation attributes
-    ; color, a short text blurb, maybe an icon.
+    ; color, a short text blurb, maybe an icon, set manually or
+    ; auto-extracted form auto-tags, like userpic for contacrs.
 *** Contacts serve as implicit tags
-    ; Probably under a common parent tag: contact/"Joe Random"
-
-*** Parsable tags can have filters
-    ; E.g. timestamp::year, or contact/"Joe Random"::phone
+    ; Probably "firsname lastname"/contact and nickname/contact
 
 ** Saved searches, aka Folders
+   ; Searches by any content can be saved. Possibly "sub-searches" with additional
+   ; constraints can look like "sub-folders".
 
-Searches by any content can be saved. Possibly "sub-searches" with additional
-constraints can look like "sub-folders".
-
-Searches purely by tags are _drag targets:_ if any taggable item dragged onto
-them, necessary tags are added, incompatible tags are removed. It's a fast
-categorization tool.
+   ; Searches purely by tags are *drag targets*: if any taggable item was dragged 
+   ; onto them, necessary tags are added, incompatible tags are removed. 
+   ; It's a fast categorization tool.
 
 * Concurrent updates and consistency
 
@@ -91,7 +120,8 @@ Language independence.
 
 ** Authentication
 
-*** Author Authentication * Facets
+*** Author Authentication 
+*** Facets
 
 ** Consumer authentication
 *** OpenID
