@@ -27,7 +27,20 @@ show it like that. Make it explicit. Allows easy text folding, focusing, etc.
 Works great with plain texts in word processors already. HTML DOM is somehow
 similar.
 
-Multiple windows can show different subnodes of a document.
+### Views and input focus
+
+Multiple windows can show different subnodes of a document. Easy to compare or
+refer to without scrolling.
+
+Only one node has input focus. The focused node, if large, can take up the
+window, its scrolling controls, etc.
+
+Keyboard shortcuts work within the focused node. Different types of nodes can
+have duplicate shortcuts without conflicting. Inter-node navigation shortcuts
+are consistent, though.
+
+Search and replace can be filtered by node type(s); compare with filtering by
+styles in a word processor.
 
 ## Need tables!
 
