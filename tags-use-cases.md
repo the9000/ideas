@@ -36,6 +36,7 @@ Non-hierarchical, search-based naming (filesystem):
 `{"Sad but true", music/audio, mp3, 192/bitrate}` is more precise.
 
 ## Pseudo-hierarchical FS view 
+
 Shows all available tags for the set selected by current path. If the number of
 next level-tags is significantly smaller than of top-level tags, the second
 level is displayed first:
@@ -44,6 +45,18 @@ level is displayed first:
 
 Downsides: unstability of levels.
 
+### Version control
+
+Items under a VCS can have tags like `12345/version` or `release/version/tag`,
+set by the VCS.
+
+Consider also smth like `987293874932/version/hash`, as in git.
+
+VCS attributes could also live in or be projected to the tag space:
+`added/version/control`, etc. This _breaks_ for removed tracked files, though:
+no entity to attach `removed/version/control` to.
+
+---
 
     // other possibilities, seemingly inferior
 
