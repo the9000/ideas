@@ -1,53 +1,78 @@
 # Personal Cloud
 
-* Common in-cloud services for parts
+* Core in-cloud services
   ; This what an OS should be providing.
   ; As thin a layer above the OS as possible.
   ; As language-agnostic as possible.
   ; See App Engine.
 
-** Security.
+** Security                                                            :core:
 *** Authentication service.
 **** OpenID, OAuth accepted from remote systems
 **** (?) OpenID, OAuth provided outside
-**** Gravatar for userpics.
-**** A local profile can be filled in to give more details.
-**** Internally may link profiles to contacts.
 *** Capability-based access control.
 *** Encryption service (uses user's secrets).
 **** (?) SSH infrastructure exposed
 **** (?) GPG keys and infrastructure exposed
 
-** Storage
-*** Persistent blob storage (binary data), mime-typed.
+** Storage                                                             :core:
+*** Persistent blob storage (binary data), mime-typed.                 :core:
+**** Intended as distributed
+     ; Works on server(s) and clients, auto-propagates changes.
+**** Eventual consistency
+     ; DVCS-style, manual conflict resolution where necessary.
 **** Efficient search by keys and by tags.
-*** Tagging service
+
+*** Temporary storage
+**** Not replicated
+**** Efficient copying to persistent storage
+**** Automatic garbage collection
+
+*** Tagging service                                                    :core:
+    ; All user-facing metadata is in tags
 **** Tag discovery for items that reasonably support it
      ; audio, photo.
-**** Unique [sub]tags are automatically added to each data item.
+**** An unique ID tag are automatically added to each data item.
 **** Tag-based "file system".
-*** (?) Full-text search
-*** Memcached
-*** (?) RDBMS
+
+*** Memcached                                                   :std_service:
 *** (?) Fast key-value DB
+    ; Can it be unified with something?
 
 ** Internal messaging
-*** Queues
-*** Cron
-*** (?) pub-sub
-    ; Has issues.
+*** Queues                                                             :core:
+*** Cron                                                               :core:
+*** Pub-sub
+    ; Post to subscribers' queues
+    
+** Service discovery
+   ; Services are REST, so usual conventions should apply
+*** Well-known service names
+*** API level versions
+*** Diffenrent providers of the same service
 
-** Contacts
+** Contacts                                                     :std_service:
 *** Profiles for human contacts
-    ; linked to security credentials if needed
+    ; linked to security credentials as needed
+**** Gravatar for userpics.
+**** A local profile can be filled in to give more details.
+**** Internally may link several profiles to a contact.
 *** (?) Profiles for machine accounts
     ; external services, RSS feeds, etc
+
+* Optional in-cloud services
+  ; Many apps may need them
+** Storage
+*** Full-text search
+*** RDBMS
 
 * User-facing apps
   ; Built on top of common services.
 
 ** File storage.
    ; Exposes the tag-based "file system"
+*** Dropbox-like client
+*** Web interface
 ** Picture gallery.
 ** Video gallery.
 
@@ -63,7 +88,6 @@
 
 ** Spreadsheet?
 *** Must have serious offline capabilities
-
 
 * Extensibility
   ; Common language-neutral engine allows to add parts.
@@ -88,7 +112,6 @@
    ; See the reverse tags document
 *** Tags are hierarchical
     ; most specific part goes first: inbox/mail, "Moby Dick"/title
-    ; Assume slash to separate level, double quotes to quote spaces.
 *** Tags are pervasive.
     ; All applications within the cloud use the same set of tags.
 *** Tags have presentation attributes
