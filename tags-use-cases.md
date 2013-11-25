@@ -45,6 +45,17 @@ level is displayed first:
 
 Downsides: unstability of levels.
 
+## Foleder emulation
+
+_Rationale:_ Simplify life for users that won't give up folders.
+
+Specific end tag `folder` is understood by the UI. It gives a complete tree navigation 
+experience. Empty levels are inserted as needed.
+
+Copying: Copies the object and updates its outermost `folder` tag.
+
+Moving: Sets a given `folder` tag and removes all other `folder` tags, if any.
+
 ### Version control
 
 Items under a VCS can have tags like `12345/version` or `release/version/tag`,
