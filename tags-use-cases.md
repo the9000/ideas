@@ -52,6 +52,8 @@ _Rationale:_ Simplify life for users that won't give up folders.
 Specific end tag `folder` is understood by the UI. It gives a complete tree navigation 
 experience. Empty levels are inserted as needed.
 
+The tag is still reversed: `bar/foo/folder` means `/foo/bar`.
+
 Copying: Copies the object and updates its outermost `folder` tag.
 
 Moving: Sets a given `folder` tag and removes all other `folder` tags, if any.
