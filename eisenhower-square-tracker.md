@@ -45,7 +45,12 @@ color in a predictable way. E.g. left is 100% red, 0% green and right is
 There's no smooth gradient; color levels jump to show quadrant borders.
 
 ### Archived tasks
+**TBD.**
 Gutter on the left goes to the band / list of archived tasks, all past due.
+
+Separate / split view of completed and failed tasks.
+
+Some analysis tools (e.g. how much past due).
 
 ## Internals
 
