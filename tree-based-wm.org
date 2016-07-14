@@ -1,0 +1,74 @@
+* Use WM for everything, make windows simple
+
+Abolish all the tabbed windows, split windows, etc. Let the WM do all this uniformly.
+
+
+** Frames group windows.
+
+A /frame/ carries the traditional the WM controls / decorations, and additional controls to select and manipulate windows within it.
+
+Inside a frame, windows can be put next to one another to form a "split" or "tabbed" view.
+
+A frame can be put inside a frame, too, forming a complex strucuture, e.g. tabs within tabs, two tabbed views with a split, etc.
+
+A frame may have an explicit tree-based tab control.
+
+A "simple" window has an /implicit/ frame (think WM decorations).
+
+The /desktop/ is a special kind of frame. Virtual desktops can be seen as tabs within it.
+
+** Frames control the way windows are displayed.
+
+*** A frame dictates the geometry of all windows that belong to it.
+It  handles moving, resizing, virtual desktop position, etc.
+
+Moving split controls within a frame preserves its outer size.
+
+*** A frame dictates how multimple windows in it are represented.
+It has control surfacea like tabs, split bars, etc. The presentation can be explicitly controlled or auto-switch (2-pane split -> 10-window tabed interface).
+
+*** Non-resizable windows may have padding or scroll bars added around them if they can't fit the frame constraints.
+Padding color, etc is a part of the WM settings, maybe additionally tunable per frame.
+
+*** The desktop handles resizing and positioning of child frames differently: no scroll bars, resizing and positioning is free.
+
+The desktop uses the normal window switching controls to switch the top-level frames.
+
+** Frames allow restructuring.
+
+Divide a frame in two frames (e.g. cut by split line or move a group of tabs out), disband a tabbed frame making separate windows.
+
+Drag a tab from one frame to another to move the window. Drag the a window outside to make it an independent frame.
+
+A command from a WM menu allows to drag together two windows, forming a "split" view.
+
+** Frames control child window creation.
+
+Depending on the type of the window, and maybe on application, child windows can be attached to the frame of the parent window as splits or tabs, given their own frame, etc.
+
+Modal dialogs are handled specially; they are replacing or overlaying the parent window, and do not affect other windows of the frame (e.g. other tabs). If a modal dialog springs up in a window not currently visible in a frame, the frame controls indicate it.
+
+** Tool windows
+
+Different tool windows are handled in special ways depending on their geometry.
+
+*** Long or tall toolbars
+Such toolbars are represented by splitting the frame horizontally or vertically and "docking" the toolbar along the appropriate side of the main (or other) windows.
+
+*** Small floating tool windows
+These receive a split area such that the smallest amount of screen space is wasted. Several compact tool windows can be arranged in sub-spilts within the main "tool-oriented" split. This emulates tool windows docking behavior in many applications that support it.
+|    main window       |
+|-------+--------------|
+|  tool |  more tools  |
+
+** Interaction of windows with the framing WM
+
+Applications may give /hints/ to the WM to help it best handle window placement. For ICCCM-compliant WMs, there's already a mechanism.
+
+The WM may ignore the hints, due to geometric impossibility or user overrides.
+
+*** Frames have names
+Names are identifiers like filesystem paths; frames can be referred to by these names. The paths represent the tree-like hierarchy within the frame (or maybe from the root).  Applications receive messages from the WM when a window is moved to a different frame, and can track and query the mapping between the application's windows and frames that contain them.
+
+*** New window placement
+By default, a new window of an application is created within the same frame where lies the application window that the user interacted with most recently.
