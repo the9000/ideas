@@ -26,6 +26,7 @@ Moving split controls within a frame preserves its outer size.
 
 *** A frame dictates how multimple windows in it are represented.
 It has control surfacea like tabs, split bars, etc. The presentation can be explicitly controlled or auto-switch (2-pane split -> 10-window tabed interface).
+All the ways Web browsers and IDEs handle tabs and sub-windows can be supported on WM level and made available to any application.
 
 *** Non-resizable windows may have padding or scroll bars added around them if they can't fit the frame constraints.
 Padding color, etc is a part of the WM settings, maybe additionally tunable per frame.
@@ -72,3 +73,12 @@ Names are identifiers like filesystem paths; frames can be referred to by these 
 
 *** New window placement
 By default, a new window of an application is created within the same frame where lies the application window that the user interacted with most recently.
+
+An application may ask to place a new window in a particular way: to a new frame or to a specific existing frame, by forming a split at a given location relative to another application's window, as a tab relative to another application's tab, etc.
+
+*** Existing window transformation
+An application may ask to re-layout its windows in a frame, e.g. to move a window, switch a frame  between split and tabbed layout, change tab order and split layout, or generally rebuild a frame using new desired sizes of the windows.
+
+The WM honors such messages as it sees fit, depending on available screen space and user settings.
+
+Applications may take advantage of the WM even running in a terminal: additional ESC codes can be used to e.g. have native tabs in `tmux`.
