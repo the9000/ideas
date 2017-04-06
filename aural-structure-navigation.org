@@ -1,16 +1,18 @@
-
-*  Use musical sounds to represent complex structures
+* Use musical sounds to represent complex structures
 
 Humans are good at processing visual and aural information simultaneously. Listening neither prevent nor requires seeing. Human hearing is nuanced, and humans are good at recognizing patterns in audio signals.
 
 ** Replacement 'vision' for blind people.
+
 Help navigate in a reasonably controlled environment (a house or a city street, not wilderness). Help manipulate objects more efficiently.
 
 ** Control of complex interfaces when vision is already busy with something else.
+
 Communicate important parameters (key readings, radar picture) to a driver or a pilot.
 
 * How it works
 ** By pitch
+
 Sound's pitch represent parameter values.
 
 Different parameters can be represented as a continuous tone (only 1-2 most important, optionally) or as periodic bursts (usually).
@@ -20,6 +22,7 @@ Smooth variation in pitch can imitate the Doppler effect and give the sense of b
 Short noise-like sounds (clicks, blasts, etc) that don't have easily recognizable pitch variation can be used at constant pitch.
 
 ** By timing
+
 Repetition periods and duration, and also attack / sustain / fade characteristics, represent related parameter values. Different durations may result in interestingly changing texture of chords.
 
 Related sounds are grouped together in time to build chords. E.g. in navigation sounds representing various parts / parameters of a complex object should be grouped.
@@ -27,6 +30,7 @@ Related sounds are grouped together in time to build chords. E.g. in navigation 
 Short echo can be represented as an accent (a boolean parameter).
 
 ** By voice
+
 Different timbres mark different parameters.
 
 When a pitch range of a sound is known to be significantly limited (e.g. only 1-2 octaves), the same timbre (e.g. same sample) can be reused for different parameters at very different pitches.
@@ -38,12 +42,14 @@ Only certain smooth and predictable timbre variations are good for representing 
 Entire chords can change their frequency envelope in concert (low-pass / high-pass) to represent changes in the whole group of related signals, e.g. height or angle during navigation, getting within a critical distance, etc.. 
 
 ** By volume
+
 Volume represents relative significance of signals, e.g. distance from the user while navigating.
 
 Constant 'baseline' signals can be made low-voulme to give room to quickly changing signals.
 
 ** By spatial cues
-Stereo separation gives a basic idea of parameter's 'heading'. This makes specific sense for space orientation, but may also be used to represent several (2-4) similar 'channels' for non-spatial 
+
+Stereo separation gives a basic idea of parameter's 'heading'. This makes specific sense for space orientation, but may also be used to represent several (2-4) similar 'channels' for non-spatial values.
 
 Spatial processing may add a 'fore-back' axis, giving an additional 360° directional dimension to the sound. This is especially important for vision-replacing applications.
 
@@ -53,6 +59,7 @@ Chords and progressions, as they build, may draw emotionally-colored pictures, F
 
 * Implementation for vision
 ** The general idea
+
 A visual scene is parsed, yielding key information: angular dimensions, form, color, distance if possible, inscriptions if possible. Recognized shapes, e.g. traffic signs, are annotated. The result is a tree-like structure.
 
 Each reasonably tight structure is mapped to a chord (1-4 voices).
@@ -62,6 +69,7 @@ Chords are played in progression, generally from most prominent scene features t
 If possible, features that are spatially close should be represented as temporally close. Picture clusterization would help this.
 
 ** Problems to solve
+
 Representation of the scene takes several seconds. This makes the information about close-by objects late even for a slowly moving subject.
 
 Possibly the closest features (walls, doors, hands) can be represented with a higher repetition frequency than distant, slowly-changing features (landscape).
@@ -69,15 +77,20 @@ Possibly the closest features (walls, doors, hands) can be represented with a hi
 Visual parsing and subsequent mapping should be 'smooth' and assign the same kind of sound to the same features every frame, unless they change drastically, to achieve perceptual continuity.
 
 ** User Interface
+
 TBD
 
 ** Expected hardware
+
 TBD
 
 * Implementation for spatial awareness
+
 In this mode the user's vision is augmented not replaced. Represented objects are either not normally visible or outside the FOV.
 
-** For a pilot 
+** For a pilot
+
 Each chord can represent an aircraft. Its aural position can match the relative position, various parameters map to heading, speed, altitude, type. The frequency of updates can be proportional to importance: how close the aircraft is, is the distance shrinking or growing, etc.
 
 Important ground structures like runways, towers, and even air positions like the approaching corridor can be marked similarly.
+
