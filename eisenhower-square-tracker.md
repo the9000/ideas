@@ -3,7 +3,7 @@
 Visually arranges tickets. People are good at seeing geometric patterns.
 
 Seeing issues cropping up in "urgent and important" quadrant is a clear call
-to action. Seeing issues dangerously creeping to the 
+to action. Seeing issues dangerously creeping to the edges is a visual clue, too.
 
 Every ticket has `importance` and `due` as required parameters;
 the very geometry of the chart shows / sets them.
