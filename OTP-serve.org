@@ -2,6 +2,7 @@
 A web server that serves files on a path that includes an OTP code.
 - The OTP is the last directory part of the served path, allowing for sensible file names.
 - One OTP per file or per directory.
+- Easy to support S3 protocol for download only.
 ** Implementations:
   - A Lua-based rewrite rule for nginx.
   - A drop-in tiny HTTP server written in (naturally) Rust, or maybe Go, to run behind any fronting server.
