@@ -9,8 +9,10 @@ A web server that serves files on a path that includes an OTP code.
 Each file is referred to using a moniker, because local file names can repeat, and paths be unwieldy.
   - Moniker to OTP parameters; edited to add / remove served paths.
   - Moniker to filesystem / webroot path, for easy mounting.
-*** Admin UI
-A separate server that updates the configuration files.
+*** Admin interface
+A separate server that updates the configuration files. Needs auth, etc.
+- Any kind: a Web UI, API, TUI / CLI via ssh, etc.
+- Should listen on a separate port, etc.
 ** Upsides:
   - Security through unpredictability, without encryption.
   - Links, if leaked, auto-expire quickly.
