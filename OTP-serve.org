@@ -1,0 +1,22 @@
+* OTP-serve
+A web server that serves files on a path that includes an OTP code.
+- The OTP is the last directory part of the served path, allowing for sensible file names.
+- One OTP per file or per directory.
+** Implementations:
+  - A Lua-based rewrite rule for nginx.
+  - A drop-in tiny HTTP server written in (naturally) Rust, or maybe Go, to run behind any fronting server.
+*** Two configuration files
+Each file is referred to using a moniker, because local file names can repeat, and paths be unwieldy.
+  - Moniker to OTP parameters; edited to add / remove served paths.
+  - Moniker to filesystem / webroot path, for easy mounting.
+*** Admin UI
+A separate server that updates the configuration files.
+** Upsides:
+  - Security through unpredictability, without encryption.
+  - Links, if leaked, auto-expire quickly.
+  - No need to pre-share keys except OTP.
+  - OTP apps abound, a standard algorithm.
+** Downsides:
+  - Long files cannot be re-downloaded after the OTP expires.
+    - May be alleviated by accepting a wider range.
+  - Rotation time has to depend on the file size.
