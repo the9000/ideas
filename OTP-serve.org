@@ -3,6 +3,17 @@ A web server that serves files on a path that includes an OTP code.
 - The OTP is the last directory part of the served path, allowing for sensible file names.
 - One OTP per file or per directory.
 - Easy to support S3 protocol for download only.
+** Upsides:
+  - /Absurd simplicity/, no need to explicitly generate keys, keep encrypted copies of files, etc.
+  - Standard HTTP tools work, as long as the user can manually insert 6-8 digits into the URL.
+  - Links, if leaked, auto-expire quickly.
+  - No client information need to be stored on the server except the OTP parameters.
+  - OTP apps abound, a standard algorithm.
+** Downsides:
+  - Requires manual fiddling with the URL.
+  - No easy restarts of downloads for long files on slow links, once the OTP expires.
+  - Rotation time has to depend on the file size.
+  - If OTP parameters are lost, access is lost.
 ** Implementations:
   - A Lua-based rewrite rule for nginx.
   - A drop-in tiny HTTP server written in (naturally) Rust, or maybe Go, to run behind any fronting server.
@@ -14,12 +25,3 @@ Each file is referred to using a moniker, because local file names can repeat, a
 A separate server that updates the configuration files. Needs auth, etc.
 - Any kind: a Web UI, API, TUI / CLI via ssh, etc.
 - Should listen on a separate port, etc.
-** Upsides:
-  - Security through unpredictability, without encryption.
-  - Links, if leaked, auto-expire quickly.
-  - No need to pre-share keys except OTP.
-  - OTP apps abound, a standard algorithm.
-** Downsides:
-  - Long files cannot be re-downloaded after the OTP expires.
-    - May be alleviated by accepting a wider range.
-  - Rotation time has to depend on the file size.
